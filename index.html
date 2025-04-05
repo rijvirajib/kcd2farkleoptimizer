@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KCD2 Farkle Dice Optimizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen p-4">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+      <h1 class="text-3xl font-bold text-center mb-4">KCD2 Farkle Dice Optimizer</h1>
+      <p class="text-center mb-6">Select dice from your inventory to find the highest-scoring 6-dice combinations.</p>
+
+      <div class="mb-6">
+        <div class="flex gap-2 mb-4">
+          <input
+            type="text"
+            id="dice-search"
+            placeholder="Search dice to add to inventory..."
+            class="border rounded p-2 flex-grow">
+        </div>
+        <div id="search-results" class="hidden border rounded max-h-40 overflow-y-auto mb-4"></div>
+        
+        <div class="flex gap-2 mb-4">
+          <button
+            id="save-preset-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            Save Preset
+          </button>
+          <select id="preset-select" class="border rounded p-2 flex-grow">
+            <option value>Load a preset...</option>
+          </select>
+          <button
+            id="load-preset-btn"
+            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+            Load
+          </button>
+          <button
+            id="delete-preset-btn"
+            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+            Delete
+          </button>
+        </div>
+
+        <h2 class="text-xl font-semibold mb-2">Your Inventory</h2>
+        <div id="dice-inventory" class="flex flex-wrap gap-2 mb-4">
+          <!-- Dice pool -->
+        </div>
+      </div>
+
+      <div id="save-preset-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
+          <h3 class="text-xl font-bold mb-4">Save Preset</h3>
+          <input
+            type="text"
+            id="preset-name"
+            placeholder="Enter preset name"
+            class="border rounded p-2 w-full mb-4">
+          <div class="flex justify-end gap-2">
+            <button
+              id="cancel-save-preset"
+              class="bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded">
+              Cancel
+            </button>
+            <button
+              id="confirm-save-preset"
+              class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button
+        id="calculate-btn"
+        class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-bold mb-6">
+        Calculate Combinations
+      </button>
+      <div id="loading" class="hidden">
+        <div class="flex items-center justify-center mb-6">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
+          <span class="ml-2">Calculating best combinations...</span>
+        </div>
+      </div>
+      <div id="results" class="hidden">
+        <h2 class="text-xl font-semibold mb-4">Top 5 Highest-Scoring
+          Combinations</h2>
+        <div id="optimal-combinations" class="space-y-4">
+          <!-- Results -->
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
